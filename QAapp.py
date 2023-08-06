@@ -16,6 +16,8 @@ from langchain.schema import SystemMessage, AIMessage, HumanMessage
 from langchain.prompts import MessagesPlaceholder
 from langsmith import Client
 
+from secret import openai_api_key
+
 client = Client()
 
 st.set_page_config(
@@ -38,7 +40,7 @@ def configure_retriever():
         chunk_overlap=200,
     )
     documents = text_splitter.split_documents(docs)
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
     vectorstore = FAISS.from_documents(documents, embeddings)
     return vectorstore.as_retriever(search_kwargs={"k": 4})
 
@@ -49,7 +51,9 @@ tool = create_retriever_tool(
     "Searches and returns documents regarding LangSmith. LangSmith is a platform for debugging, testing, evaluating, and monitoring LLM applications. You do not know anything about LangSmith, so if you are ever asked about LangSmith you should use this tool.",
 )
 tools = [tool]
-llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4")
+llm = ChatOpenAI(
+    temperature=0, openai_api_key=openai_api_key, streaming=True, model="gpt-4"
+)
 message = SystemMessage(
     content=(
         "You are a helpful chatbot who is tasked with answering questions about LangSmith. "

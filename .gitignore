@@ -1,0 +1,5 @@
+.env
+.vscode
+secret.py
+__pycache__
+streamlit
