@@ -1,0 +1,12 @@
+General:
+In mem docs- https://python.langchain.com/docs/use_cases/question_answering/how_to/question_answering
+
+Better answers:
+- FLARE: https://python.langchain.com/docs/use_cases/question_answering/how_to/flare
+- HyDE: https://python.langchain.com/docs/use_cases/question_answering/how_to/hyde
+- Sources: https://python.langchain.com/docs/use_cases/question_answering/how_to/qa_citations
+- Vector Search: https://python.langchain.com/docs/use_cases/question_answering/how_to/vector_db_text_generation
+
+Multiple segments (example: Retailers):
+- Router Chains: https://python.langchain.com/docs/use_cases/question_answering/how_to/multi_retrieval_qa_router
+
